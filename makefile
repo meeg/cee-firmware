@@ -134,7 +134,7 @@ CPPSRC =
 #     Even though the DOS/Win* filesystem matches both .s and .S the same,
 #     it will preserve the spelling of the filenames, and gcc itself does
 #     care about how the name is spelled on its command-line.
-ASRC =
+ASRC = ffft.S
 
 
 # Optimization level, can be [0, 1, 2, 3, s].
@@ -256,6 +256,7 @@ CPPFLAGS += $(patsubst %,-I%,$(EXTRAINCDIRS))
 #  -listing-cont-lines: Sets the maximum number of continuation lines of hex
 #       dump that will be displayed for a given single line of source input.
 ASFLAGS = $(ADEFS) -Wa,-adhlns=$(<:%.S=$(OBJDIR)/%.lst),-gstabs,--listing-cont-lines=100
+ASFLAGS += $(patsubst %,-I%,$(EXTRAINCDIRS))
 
 
 #---------------- Library Options ----------------
